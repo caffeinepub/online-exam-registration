@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* White page background */
+    --background: 1 0 0;
+    --foreground: 0.19 0.014 265;
+
+    /* Card */
+    --card: 1 0 0;
+    --card-foreground: 0.19 0.014 265;
+
+    /* Popover */
+    --popover: 1 0 0;
+    --popover-foreground: 0.19 0.014 265;
+
+    /* Primary green #2F9E63 */
+    --primary: 0.625 0.155 155;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary – light section bg #F3F4F6 */
+    --secondary: 0.963 0.006 265;
+    --secondary-foreground: 0.19 0.014 265;
+
+    /* Muted */
+    --muted: 0.963 0.006 265;
+    --muted-foreground: 0.52 0.01 265;
+
+    /* Accent – mint #BFEAD2 */
+    --accent: 0.91 0.065 155;
+    --accent-foreground: 0.19 0.014 265;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 1 0 0;
+
+    /* Border #E5E7EB */
+    --border: 0.92 0.008 265;
+    --input: 0.92 0.008 265;
+    --ring: 0.625 0.155 155;
+
+    /* Charts */
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.19 0.014 265;
+    --sidebar-primary: 0.625 0.155 155;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.91 0.065 155;
+    --sidebar-accent-foreground: 0.19 0.014 265;
+    --sidebar-border: 0.92 0.008 265;
+    --sidebar-ring: 0.625 0.155 155;
+  }
+
+  .dark {
+    --background: 0.145 0 0;
+    --foreground: 0.985 0 0;
+    --card: 0.205 0 0;
+    --card-foreground: 0.985 0 0;
+    --popover: 0.269 0 0;
+    --popover-foreground: 0.985 0 0;
+    --primary: 0.625 0.155 155;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.269 0 0;
+    --secondary-foreground: 0.985 0 0;
+    --muted: 0.269 0 0;
+    --muted-foreground: 0.708 0 0;
+    --accent: 0.91 0.065 155;
+    --accent-foreground: 0.19 0.014 265;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 1 0 0;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.625 0.155 155;
+    --sidebar: 0.17 0.01 265;
+    --sidebar-foreground: 0.985 0 0;
+    --sidebar-primary: 0.625 0.155 155;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.371 0 0;
+    --sidebar-accent-foreground: 0.985 0 0;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system,
+      sans-serif;
+  }
+}
+
+@layer components {
+  /* Footer dark background */
+  .bg-footer {
+    background-color: oklch(0.17 0.01 265);
+  }
+  .text-footer-fg {
+    color: oklch(0.985 0 0);
+  }
+  .text-footer-muted {
+    color: oklch(0.65 0.01 265);
+  }
+  .border-footer {
+    border-color: oklch(0.28 0.01 265);
+  }
+
+  /* Green dark variant for hover */
+  .bg-primary-dark {
+    background-color: oklch(0.565 0.14 155);
+  }
+
+  /* Mint section background */
+  .bg-mint-light {
+    background-color: oklch(0.97 0.02 155);
+  }
+
+  /* Input height convenience */
+  .input-tall {
+    height: 2.75rem;
+  }
+}
+
+/* ── Print styles for Registration Slip ── */
+.print-slip {
+  display: none;
+}
+
+@media print {
+  /* Hide everything in body except the print slip */
+  body > *:not(.print-slip) {
+    display: none !important;
+  }
+
+  /* Show only the slip */
+  body > .print-slip {
+    display: block !important;
+  }
+
+  /* Reset page margins for clean A4 output */
+  @page {
+    margin: 0;
+    size: A4 portrait;
+  }
+}
